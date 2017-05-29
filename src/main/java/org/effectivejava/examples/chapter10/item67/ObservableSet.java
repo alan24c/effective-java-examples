@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+// ObservableSet,主要是维护集合的观察者,以及回调相关的方法
 public class ObservableSet<E> extends ForwardingSet<E> {
 	public ObservableSet(Set<E> set) {
 		super(set);
@@ -29,6 +30,7 @@ public class ObservableSet<E> extends ForwardingSet<E> {
 	private void notifyElementAdded(E element) {
 		synchronized (observers) {
 			for (SetObserver<E> observer : observers)
+				// 回调函数
 				observer.added(this, element);
 		}
 	}
@@ -61,9 +63,9 @@ public class ObservableSet<E> extends ForwardingSet<E> {
 
 	@Override
 	public boolean add(E element) {
-		boolean added = super.add(element);
+		boolean added = super.add(element);  // 父类存储元素
 		if (added)
-			notifyElementAdded(element);
+			notifyElementAdded(element);     // 通知回调函数
 		return added;
 	}
 

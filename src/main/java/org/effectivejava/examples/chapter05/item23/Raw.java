@@ -8,11 +8,16 @@ public class Raw {
 	// Uses raw type (List) - fails at runtime! - Page 112
 	public static void main(String[] args) {
 		List<String> strings = new ArrayList<String>();
+		//unsafeAddObject(strings, new Integer(42));
 		unsafeAdd(strings, new Integer(42));
 		String s = strings.get(0); // Compiler-generated cast
 	}
 
 	private static void unsafeAdd(List list, Object o) {
+		list.add(o);
+	}
+
+	private static void unsafeAddObject(List<Object> list, Object o) {
 		list.add(o);
 	}
 

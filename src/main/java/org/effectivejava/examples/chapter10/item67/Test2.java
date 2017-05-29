@@ -12,11 +12,11 @@ public class Test2 {
 			public void added(ObservableSet<Integer> s, Integer e) {
 				System.out.println(e);
 				if (e == 23)
-					s.removeObserver(this);
+					s.removeObserver(this); // 遍历 SetObserver 的同时修改了SetObserver
 			}
 		});
 
 		for (int i = 0; i < 100; i++)
-			set.add(i);
+			set.add(i);           // 遍历 SetObserver
 	}
 }
