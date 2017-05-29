@@ -7,6 +7,10 @@ import java.util.Map;
 
 public class GenericStaticFactory {
 	// Generic static factory method
+	/*
+	   范型方法的定义
+	   注意：与范型接口: List<E> 或 UnaryFunction<T> 的区别
+	 */
 	public static <K, V> HashMap<K, V> newHashMap() {
 		return new HashMap<K, V>();
 	}
